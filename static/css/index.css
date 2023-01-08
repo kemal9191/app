@@ -1,0 +1,225 @@
+/*-----------------------------------------*/
+/* Custom Properties                       */
+/*-----------------------------------------*/
+
+:root{
+    /* Colors */
+
+    ---clr-green: #97BC62FF;
+    ---clr-blue: #4b6cc1;
+    ---clr-red: #c90005;
+    ---clr-beige: #E69A8DFF;
+
+    /* Font Sizes */
+    --fs-900: 9.375rem;
+    --fs-800: 6.25rem;
+    --fs-700: 3.5rem;
+    --fs-600: 2rem;
+    --fs-500: 1.75rem;
+    --fs-400: 1.125rem;
+    --fs-300: 1rem;
+    --fs-200: 0.875rem;
+
+    /* Font-families */
+    --ff-default:'Ubuntu', sans-serif;
+}
+
+/*-----------------------------------------*/
+/* Reset                                   */
+/*-----------------------------------------*/
+
+/* Box Sizing */
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+}
+
+/* Reset Margins */
+body,
+h1,
+p,
+div,
+img{
+    margin:0;
+}
+
+/* Body */
+body{
+    font-family: var(--ff-default);
+    font-size: var(--fs-300);
+    min-height: 100vh;
+    text-align: justify;
+}
+
+/*-----------------------------------------*/
+/* Utility Classes                         */
+/*-----------------------------------------*/
+
+/* General */
+p{
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+/* Screen Reader Only */
+.sr-only{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap; /* added line */
+    border: 0;    
+}
+
+/* Colors */
+
+
+/* Typography */
+
+.letter-spacing-1{ letter-spacing: 4.75px;}
+.letter-spacing-2{ letter-spacing: 2.7px;}
+.letter-spacing-3{ letter-spacing: 2.35px;}
+
+.uppercase{ text-transform: uppercase;}
+
+.fs-900{ font-size: var(--fs-900);}
+.fs-800{ font-size: var(--fs-800);}
+.fs-700{ font-size: var(--fs-700);}
+.fs-600{ font-size: var(--fs-600);}
+.fs-500{ font-size: var(--fs-500);}
+.fs-400{ font-size: var(--fs-400);}
+.fs-300{ font-size: var(--fs-300);}
+.fs-200{ font-size: var(--fs-200);}
+
+.fs-900,
+.fs-800,
+.fs-700,
+.fs-600{
+    line-height: 1.1;
+}
+
+.nav-logo{
+    width: 100px;
+    height: 100px;
+}
+
+.footer-logo{
+    width: 50px;
+    height: 50px;
+}
+
+footer{
+    height: 75px;
+    width:100%;
+    bottom: 0;
+    position: fixed; 
+    display: flex;
+    justify-content: center;
+}
+.top-bar{
+    border-top: 2px solid grey;
+    width: 80%;
+
+
+}
+.skill-section > img{
+    width: 100%;
+    height: auto;
+}
+
+a{
+    text-decoration: none;
+}
+
+header li{
+    transition: transform 200ms ease-in-out;
+}
+header ul:where(:not(:first-child)) li:hover{
+    transform: scale(1.2);
+    
+}
+
+.nav-logo{
+    transition: transform 200ms ease-out;
+}
+
+.nav-logo:hover{
+    transform: scale(1.2);
+}
+
+footer li{
+    transition: margin transform 200ms ease-out;
+}
+
+footer li:hover{
+    transform: scale(1.2);
+    margin-top: 5px;
+}
+
+.skill-container{
+    transition: transform 200ms ease-in-out;
+}
+.skill-container:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transform: scale(1.05);
+}
+
+.article-list{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.search-bar{
+    transition: transform 500ms ease;
+}
+
+.search-bar:focus{
+    transform: scale(1.05);
+}
+
+.article-container:where(:last-child) hr{
+    display: none;
+
+}
+
+.project-container hr:where(:last-child){
+    display: none;
+}
+
+.category{
+    -webkit-transition:border-bottom-color 500ms linear;    
+    -moz-transition:border-bottom-color 500ms linear;      
+    -moz-animation:border-bottom-color 500ms linear; 
+    transition: border-bottom-color 500ms linear;
+    border:2px solid rgba(0, 0, 0, 0);
+    
+}
+
+.category:hover{
+    border-bottom-color: rgba(0, 0, 0, 0.5);
+}
+
+#checked{
+    color: green;
+}
+
+
+pre{
+    overflow: scroll;
+    margin: 2em;
+    padding: 1em;
+    scroll-snap-type: none;
+    max-height: 500px
+}
+
+.content{
+    visibility: "visible" !important;
+    background-color: red;
+}

@@ -1,0 +1,68 @@
+    {% extends 'main/layout.html' %}
+    {% block container %}
+        <div class="container pb-5">
+            <div class="d-flex flex-column flex-lg-row mt-5">
+                <div class="d-flex flex-column mt-3 col-lg-5">
+                    <h4 class="fw-bold">SEARCH</h4>
+                    <input type="text" class="rounded col-md-6 mt-3 search-bar" placeholder="JavaScript, Flask, HTML5, CSS3">
+                    <ul class="mt-5">
+                        {% for key, val in categories.items() %}
+                            <li class="d-flex justify-content-between align-items-start col-6 py-1">
+                                <a {% if category ==key %} class="fw-bold category text-primary" {% else %} class="fw-bold text-muted category" {% endif %} href="{{url_for('main.show_by_category', category=key)}}">{{key}}</a> 
+                                <span class="badge bg-primary rounded-pill">{{val}}</span>
+                            </li>
+                        {% endfor %}
+                        <li class="d-flex justify-content-between align-items-start col-6 py-1">
+                            <a {% if not category  %} class="fw-bold category text-primary" {% else %} class="fw-bold text-muted category" {% endif %} href="{{url_for('main.articles')}}">All</a> 
+                            <span class="badge bg-primary rounded-pill">{{total}}</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="d-flex flex-column col-lg-7 mt-3">
+                    <div>
+                        {% for article in articles.items %}
+                        <div class="article-container">
+                            <div class="d-flex mb-3 wrap flex-column flex-lg-row col-12">
+                                <div class="ms-lg-5 mt-3 mt-lg-0">
+                                    <h4 class="fw-bold uppercase">{{article.title|title}}</h4>
+                                    <h6 class="text-secondary">
+                                        {% for subject in article.subjects %}
+                                            <span>#{{subject}}</span>
+                                        {% endfor %}
+                                    </h6>
+                                    <p class="article-list">{{article.content|safe|truncate(length=255, killwords=False, end="...")}}</p>
+                                    <span class="text-muted">{{article.date_last_modified.strftime('%Y-%m-%d')}}</span>
+                                    <div class="col-12 my-3 mt-lg-3 my-lg-2">
+                                        <a class="btn btn-primary fw-bold" data-id="{{article.id}}" href="{{url_for('main.article_detailed', id=article.id)}}">
+                                            READ MORE
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="border border-2 border-secondary">
+                        </div>
+                    {% endfor %}
+                    </div>
+                    
+                    
+                    <div class="container d-flex justify-content-center mb-3 page-num">
+                    {% for page_num in articles.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                        {% if page_num.total != 1 %}
+                        {% if page_num %}
+                            {% if articles.page == page_num %}
+
+                      <!--<a class="btn btn-primary mb-4 mx-2" href="{{ url_for('main.projects', page=page_num) }}">{{ page_num }}</a>-->
+                    {% else %}
+                      <!--<a class="btn btn-outline-primary mb-4 mx-2" href="{{ url_for('main.projects', page=page_num) }}">{{ page_num }}</a>-->
+
+                            {% endif %}
+                        {% else %}
+                            ...
+                        {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>   
+    {% endblock %}

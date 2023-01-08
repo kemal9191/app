@@ -1,0 +1,46 @@
+    {% extends 'main/layout.html' %}
+    {% block container %}
+        <div class="container pb-5">
+            <div>
+                <h4 class="fw-bold uppercase">PROJECTS</h4>
+                <p class="fw-bold text-muted">Some of my projects and spare time tinkering</p>
+                <div class="project-container">
+                    {% for project in projects.items %}
+                    <div class="d-flex my-5 wrap flex-column flex-lg-row">
+                            <img src="{{project.image}}" class="col-lg-4 img-thumbnail img-fluid">
+                        <div class="ms-lg-5 mt-5 mt-lg-0 col-lg-8">
+                            <h4 class="fw-bold uppercase">{{project.title|title}}</h4>
+                            <h6 class="text-secondary">
+                                {% for subject in project.subjects %}
+                                    <span>#{{subject}}</span>
+                                {% endfor %}
+                            </h6>
+                            <p class="article-list">{{project.content|safe|truncate(length=255, killwords=False, end="...")}}</p>
+                            <span class="text-muted">{{project.date_last_modified.strftime('%Y-%m-%d')}}</span>
+                            <div class="col-12 mt-4">
+                                <a class="btn btn-primary fw-bold" data-id="{{project.id}}" href="{{url_for('main.project_detailed', id=project.id)}}">VIEW DETAILS</a>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="border border-2 border-secondary">
+                {% endfor %}
+                </div>
+                <div class="container d-flex justify-content-center mb-3 page-num">
+                {% for page_num in projects.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                {% if page_num.total != 1 %}
+                {% if page_num %}
+                    {% if projects.page == page_num %}
+
+                      <!--<a class="btn btn-primary mb-4 mx-2" href="{{ url_for('main.projects', page=page_num) }}">{{ page_num }}</a>-->
+                      {% else %}
+                      <!--<a class="btn btn-outline-primary mb-4 mx-2" href="{{ url_for('main.projects', page=page_num) }}">{{ page_num }}</a>-->
+                      {% endif %}
+                  {% else %}
+                    ...
+                  {% endif %}
+                {% endif %}
+                {% endfor %}
+                </div>
+            </div>
+        </div> 
+    {% endblock %}

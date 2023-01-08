@@ -1,0 +1,21 @@
+    {% extends 'main/layout.html' %}
+    {% block container %}
+        <div class="container mt-lg-5 mb-5 p-5">
+            <div class="skill-container rounded-3 bg-white m-lg-5 d-flex flex-column flex-xl-row border wrap justify-content-between shadow">
+                <div class="col-xl-5 p-3 skill-section">
+                    <h1>Hi, I am Kemal!</h1>
+                    <p class="text-justify mt-2">I'm a web developer from Istanbul, Turkey. 
+                        I work as a freelancer whose technology stack consists of Flask, 
+                        JavaScript, Bootstrap, and Postgresql.
+                        I like to spend my spare time on DIY, gaming, reading, 
+                        and building my own projects.
+                        <br><br>
+                        I am on <a href="#">Github</a>, <a href="#">Twitter</a>, and <a href="#">Linkedin</a>
+                    </p>
+                </div>
+                <div class="py-5 col-xl-7 col-sm-12 skill-section border bg-light d-flex flex-column px-2 m-0">
+                    <img src="{{url_for('static', filename='images/home.jpeg')}}" alt="" class="p-auto m-auto">
+                </div>
+            </div>
+        </div>
+    {% endblock %}

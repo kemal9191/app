@@ -1,0 +1,30 @@
+    {% extends 'main/layout.html' %}
+    {% block container %} 
+        <div class="container mt-5 pb-5">
+            <h3 class="uppercase">{{content.title|title}}</h3>
+            <div>
+                <i class="fa-solid fa-calendar-alt m-2 text-muted"></i><span class="text-muted">{{content.date_last_modified.strftime('%Y-%m-%d')}}</span>
+            </div>
+            <img src="{{content.image}}"  class="img-fluid img-thumbnail mt-3">
+            <div class="d-flex wrap align-items-center p-4 ps-2 my-3 rounded-3" style="background-color: #d6d6d6; opacity:0.9">
+                <ul class="text-start fw-bold my-auto">
+                    <li class="d-inline-block pe-5">
+                        <i class="fa-solid fa-book-open-reader"></i> 10 minute read
+                    </li>
+                    <li class="d-inline-block pe-5">
+                        <i class="fa-solid fa-layer-group"></i> 
+                        {% for subject in content.subjects %}
+                            <span class="subject">{{subject}}</span>
+                        {% endfor %}
+                    </li>
+                    <li class="d-inline-block pe-5">
+                        <i class="fa-solid fa-link"></i> Share on <a href="#" class="text-primary">Twitter</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="mb-5">
+                <p class="">{{content.content|safe}}</p>
+            </div>
+        </div> 
+    {% endblock %}
+

@@ -1,0 +1,44 @@
+    {% extends 'admin/layout.html' %}
+    {% block container %}
+        <div class="container mt-5 p-5 pt-0 d-flex justify-content-center">
+            <form class="row mb-5 d-flex flex-column w-100 align-items-center" enctype="multipart/form-data" method="POST" action="">
+                {{form.hidden_tag()}}
+                <div class="col-md-8 mb-3">
+                    {{form.type(class="form-select fw-bold bg-light")}}
+                </div>
+                <div class="col-md-8 mb-3">
+                    {{form.subjects(class="form-select fw-bold bg-light")}}
+                </div>
+                <div class="col-md-8 mb-3">
+                    {{form.title.label(class="form-label fw-bold")}}
+                    {{form.title(class="form-control", placeholder="Please enter the title of content")}}
+                </div>
+                <div class="col-md-8 mb-3">
+                    {{form.content.label(class="form-label fw-bold")}}
+                    {{form.content(class="form-control", placeholder="Please enter the content", style="")}}
+                </div>
+                <div class="col-md-8 mb-3">
+                    {{form.seo_statement.label(class="form-label fw-bold")}}
+                    {{form.seo_statement(class="form-control", placeholder="Please enter a sentence to decribe the content")}}
+                </div>
+                <div class="col-md-8 mb-3">
+                    {{form.seo_keywords.label(class="form-label fw-bold")}}
+                    {{form.seo_keywords(class="form-control", placeholder="Please enter seo keywords")}}
+                </div>
+                <div class="col-md-8 mb-3">
+                    {{form.image(class="form-control")}}
+                </div>
+                <div class="col-md-8 mb-3">
+                    {{form.image_explanation.label(class="form-label fw-bold")}}
+                    {{form.image_explanation(class="form-control")}}
+                </div>
+                <div class="col-12 text-center">
+                    {{form.submit(class="btn btn-primary fw-bold")}}
+                </div>
+        </form>
+        {{ckeditor.load()}}
+        {{ckeditor.config(name='content')}}
+        {{ ckeditor.load_code_theme() }}
+
+        </div>
+    {% endblock %}    
